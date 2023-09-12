@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -19,15 +19,14 @@ const EditUser = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams(); // Get the id from the route parameters
-  const params = useParams();
+
   const userData = useSelector((state) => {
     const userArray = state.userInfo.users || []; // Handle the case where state.users is undefined
     console.log(state.userInfo.users);
     const user = userArray.find((user) => user.id === id);
     return user || {}; // Return an empty object if user not found
   });
-  const users = useSelector((state)=>state.userInfo.users);
-  //console.log(users);
+
 
   const [formData, setFormData] = useState({
     id: userData.id,
